@@ -20,9 +20,6 @@ git checkout -b attempt-YOURNAMEHERE
 cp -R ../phone-number-exercise-2/lib ./
 git add .
 git commit -m 'add code from exercise 2'
-
-# See the failing specs
-bundle exec rspec --format documentation
 ```
 
 ## Exercise instructions
