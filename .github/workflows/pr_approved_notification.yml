@@ -13,5 +13,5 @@ jobs:
           url: 'https://www.codelix.co.uk/api/notify_pr_approved'
           method: 'POST'
           customHeaders: '{"Content-Type": "application/json"}'
-          data: '{"approver": "${{ github.actor }}", "ref_name": "${{ github.ref_name }}"}'
+          data: '{"approver": "${{ github.actor }}", "ref_name": "${{ github.ref_name }}", "repo_url": "${{ github.repositoryUrl }}"}'
         if: github.event.review.state == 'approved'
