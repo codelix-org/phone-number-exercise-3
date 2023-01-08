@@ -5,6 +5,7 @@ module Formatter
     VALID_PREFIXES = ["+44", "44", "0"]
 
     def self.call(number)
+      # some code
       raise InvalidNumber if number.empty?
       raise InvalidNumber if valid_prefix(number).nil?
 
