@@ -1,23 +1,16 @@
-require 'pry'
+require 'dry/monads'
 
 module Formatter
   class UkPhoneNumber
-    class InvalidNumber < StandardError
-      attr_reader :message
-      def initialize(message)
-        @message = message
-      end
-    end
-    
     def self.call(number)
       number.delete!(" ")
       number = number.gsub("+44", "0")
       number = number.gsub("44", "0")
       begin
         if number.length == 11 && number.slice(0..1) == "07"
-          number
+          Dry::Monads::Result::Success.new(number)
         else
-          raise InvalidNumber.new("the number: #{number}, is invalid for the UK")
+          Dry::Monads::Result::Failure.new("the number: #{number}, is invalid for the UK")
         end
       end
     end

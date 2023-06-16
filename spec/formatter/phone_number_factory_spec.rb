@@ -18,6 +18,12 @@ RSpec.describe Formatter::PhoneNumberFactory do
         result = described_class.new(mul_formatter, valid_mul_number).call
         expect(result).to eq(valid_mul_number)
       end
+      it 'raises an error when an invalid number has been passed' do
+        mul_formatter = Formatter::MulPhoneNumber
+        invalid_mul_number = "18546765674"
+        expect{described_class.new(mul_formatter, invalid_mul_number).call}.
+        to raise_error(Formatter::PhoneNumberFactory::InvalidNumber, "the number: #{invalid_mul_number}, is invalid")
+      end
     end
   end
 end
