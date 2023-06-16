@@ -60,7 +60,7 @@ RSpec.describe Formatter::MulPhoneNumber do
           expect(result.failure).to eq("the number: #{invalid_number}, is invalid for the MUL")
         end
 
-        it 'raises an error when the number is too short' do
+        it 'raises a failure monad when the number is too short' do
           invalid_number = '1867'
 
           result = Formatter::MulPhoneNumber.call(invalid_number)
@@ -69,7 +69,7 @@ RSpec.describe Formatter::MulPhoneNumber do
           expect(result.failure).to eq("the number: #{invalid_number}, is invalid for the MUL")
         end
 
-        it 'raises an error when the number is too long' do
+        it 'raises a failure monad when the number is too long' do
           invalid_number = '1876876578859768'
 
           result = Formatter::MulPhoneNumber.call(invalid_number)
@@ -78,7 +78,7 @@ RSpec.describe Formatter::MulPhoneNumber do
           expect(result.failure).to eq("the number: #{invalid_number}, is invalid for the MUL")
         end
 
-        it 'raises an error when the number contains non-numeric characters' do
+        it 'raises a failure monad when the number contains non-numeric characters' do
           invalid_number = '18non&num111'
 
           result = Formatter::MulPhoneNumber.call(invalid_number)

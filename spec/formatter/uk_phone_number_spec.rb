@@ -41,7 +41,7 @@ RSpec.describe Formatter::UkPhoneNumber do
 
       end
 
-      it 'raises an error when the number is empty' do
+      it 'raises a failure monad when the number is empty' do
         invalid_number = ''
 
         result = Formatter::UkPhoneNumber.call(invalid_number)
@@ -50,7 +50,7 @@ RSpec.describe Formatter::UkPhoneNumber do
       end
 
       context 'when the prefix is valid' do
-        it 'raises an error when the first number is not 0' do
+        it 'raises a failure monad when the first number is not 0' do
           invalid_number = '27469484176'
 
           result = Formatter::UkPhoneNumber.call(invalid_number)
@@ -59,7 +59,7 @@ RSpec.describe Formatter::UkPhoneNumber do
 
         end
 
-        it 'raises an error when the number is too short' do
+        it 'raises a failure monad when the number is too short' do
           invalid_number = '0700'
 
           result = Formatter::UkPhoneNumber.call(invalid_number)
@@ -68,7 +68,7 @@ RSpec.describe Formatter::UkPhoneNumber do
 
         end
 
-        it 'raises an error when the number is too long' do
+        it 'raises a failure monad when the number is too long' do
           invalid_number = '070007000700070007000700'
 
           result = Formatter::UkPhoneNumber.call(invalid_number)
@@ -77,7 +77,7 @@ RSpec.describe Formatter::UkPhoneNumber do
 
         end
 
-        it 'raises an error when the number contains non-numeric characters' do
+        it 'raises a failure monad when the number contains non-numeric characters' do
           invalid_number = '07non&num111'
 
           result = Formatter::UkPhoneNumber.call(invalid_number)
