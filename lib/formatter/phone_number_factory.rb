@@ -4,10 +4,6 @@ require 'pry'
 module Formatter
   class PhoneNumberFactory
     class InvalidNumber < StandardError
-      attr_reader :message
-      def initialize(message)
-        @message = message
-      end
     end
 
     def initialize(country, number)
@@ -16,7 +12,7 @@ module Formatter
     end
 
     def call
-      result = @country.call(@number).value_or {raise InvalidNumber.new("the number: #{@number}, is invalid")}
+      result = @country.call(@number).value_or {|failure| raise InvalidNumber, "#{failure}"}
     end
   end
 end
